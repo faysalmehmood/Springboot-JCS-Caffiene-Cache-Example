@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<div th:fragment="generateCvcForm">
+		<h2>Generate CVC</h2>
+		<form class="row col-md-4 border-right" action="#" th:action="@{/hsm/generateCvcForm}"
+			th:object="${cvcVerificationBean}" method="post">
+			<div class="form-group">
+				<label for="cardNo">Card No</label> <input type="number" class="form-control"
+					id="cardNo" placeholder="Card No" th:field="*{cardNo}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('cardNo')}"
+					th:errors="*{cardNo}"></div>
+			</div>
+			<div class="form-group">
+				<label for="serviceCode">Service Code</label> <input type="number"
+					class="form-control" id="serviceCode" placeholder="Service Code"
+					th:field="*{serviceCode}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('serviceCode')}"
+					th:errors="*{serviceCode}"></div>
+			</div>
+			<div class="form-group">
+				<label for="expiryDate">Expiry Date</label> <input type="date" class="form-control"
+					id="expiryDate" placeholder="Expiry Date" th:field="*{expiryDate}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('expiryDate')}"
+					th:errors="*{expiryDate}"></div>
+
+			</div>
+			<div class="form-group">
+				<label for="cvkIndex">CVK HSM Index</label> <input type="number" class="form-control"
+					id="cvkIndex" placeholder="CVK HSM Index" th:field="*{cvkIndex}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('cvkIndex')}"
+					th:errors="*{cvkIndex}"></div>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Generate</button>
+			<button type="reset" class="btn btn-default">Reset</button>
+
+		</form>
+	</div>
+
+	<div th:fragment="generatedCvc">
+
+		<br />
+		<h3>Results</h3>
+
+		<table class="table table-hover">
+			<tr>
+				<th>CVC Type</th>
+				<th>Expiry Format</th>
+				<th>CVC Value</th>
+			</tr>
+
+			<tr>
+				<td>CVC1</td>
+				<td>YYMM</td>
+				<td><span th:text="${cvcValueYYMM}"></span></td>
+			</tr>
+
+			<tr>
+				<td>CVC1</td>
+				<td>MMYY</td>
+				<td><span th:text="${cvcValueMMYY}"></span></td>
+			</tr>
+
+			<tr>
+				<td>CVC2</td>
+				<td>YYMM</td>
+				<td><span th:text="${cvc2ValueYYMM}"></span></td>
+			</tr>
+
+			<tr>
+				<td>CVC2</td>
+				<td>MMYY</td>
+				<td><span th:text="${cvc2ValueMMYY}"></span></td>
+			</tr>
+
+			<tr>
+				<td>iCVC</td>
+				<td>YYMM</td>
+				<td><span th:text="${icvcValueYYMM}"></span></td>
+			</tr>
+
+			<tr>
+				<td>iCVC</td>
+				<td>MMYY</td>
+				<td><span th:text="${icvcValueMMYY}"></span></td>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+</html>

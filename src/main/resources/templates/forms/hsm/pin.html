@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<div th:fragment="generatePinForm">
+		<h2>Generate Pin</h2>
+		<form class="row col-md-4 border-right" action="#" th:action="@{/hsm/generatePinForm}"
+			th:object="${pinGenerationBean}" method="post">
+
+			<div class="form-group">
+				<label for="cardNo">Card No</label> <input type="number" class="form-control"
+					id="cardNo" placeholder="Card No" th:field="*{cardNo}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('cardNo')}"
+					th:errors="*{cardNo}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="pvkIndex">PVK Index</label> <input type="number" class="form-control"
+					id="pvkIndex" placeholder="PVK Index" th:field="*{pvkIndex}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('pvkIndex')}"
+					th:errors="*{pvkIndex}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="clearPin">Clear PIN</label> <input type="number" class="form-control"
+					id="clearPin" placeholder="Clear PIN" th:field="*{clearPin}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('clearPin')}"
+					th:errors="*{clearPin}"></div>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Generate</button>
+			<button type="reset" class="btn btn-default">Reset</button>
+
+		</form>
+	</div>
+
+	<div th:fragment="generatedPin">
+		<h4 class="alert alert-success">
+			Generated Pin Offset : <b><span th:text="${pinOffset}"></span></b>
+		</h4>
+	</div>
+
+
+
+	<div th:fragment="PinGenRequestForm">
+		<h2>Pin Generation Request</h2>
+		<form class="row col-md-4 border-right" action="#" th:action="@{/hsm/PinGenRequest}"
+			th:object="${pinGenRequestBean}" method="post">
+
+			<div class="form-group">
+				<label for="instanceId">Instance Id</label> <select class="form-control" th:field="*{instanceId}">
+					<option th:each="instance : ${instances}" th:value="${instance}"
+						th:text="${instance}"></option>
+				</select>
+
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('instanceId')}"
+					th:errors="*{instanceId}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="cardPrgId">Card Program Id</label> <input type="text" class="form-control"
+					id="cardPrgId" placeholder="Card Program Id" th:field="*{cardPrgId}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('cardPrgId')}"
+					th:errors="*{cardPrgId}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="cardNoFrom">Card No From (Optional)</label> <input type="number"
+					class="form-control" id="cardNoFrom" placeholder="Card No From (Optional)"
+					th:field="*{cardNoFrom}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('cardNoFrom')}"
+					th:errors="*{cardNoFrom}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="cardNoTo">Card No To (Optional)</label> <input type="number"
+					class="form-control" id="cardNoTo" placeholder="Card No To (Optional)"
+					th:field="*{cardNoTo}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('cardNoTo')}"
+					th:errors="*{cardNoTo}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="pvkIndex">PVK Index</label> <input type="number" class="form-control"
+					id="pvkIndex" placeholder="PVK Index" th:field="*{pvkIndex}" />
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('pvkIndex')}"
+					th:errors="*{pvkIndex}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="clearPin">Pin Value</label> <input type="number" class="form-control"
+					id="clearPin" placeholder="Clear PIN" th:field="*{clearPin}" />
+
+				<div class="form-inline">
+					<div class="form-group">
+						<label for="setLast4DigitsAsPin">Last 4 Digits of PAN as Pin</label> <input
+							type="checkbox" class="form-control" id="setLast4DigitsAsPin" th:value="${true}"
+							th:field="*{setLast4DigitsAsPin}" />
+					</div>
+				</div>
+				<div class="alert alert-danger small" th:if="${#fields.hasErrors('clearPin')}"
+					th:errors="*{clearPin}"></div>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Generate</button>
+			<button type="reset" class="btn btn-default">Reset</button>
+
+		</form>
+
+
+	</div>
+
+
+</body>
+</html>

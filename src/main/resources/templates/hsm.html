@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/fragments :: pageHead(pageTitle='OLTP Web Application/HSM Services')"></head>
+<body>
+	<div th:replace="fragments/fragments :: header_navbar">Header Content</div>
+
+	<div class="row">
+		<div class="col-md-1 border-right">
+			<ul class="nav nav-pills nav-stacked">
+				<li role="presentation" class="active">
+					<a href="/hsm/generateCvcForm" th:href="@{/hsm/generateCvcForm}">Generate CVC</a>
+				</li>
+
+				<li role="presentation" class="active">
+					<a href="/hsm/generatePinForm" th:href="@{/hsm/generatePinForm}">Gen PinOffset</a>
+				</li>
+
+				<li role="presentation" class="active">
+					<a href="/hsm/PinGenRequest" th:href="@{/hsm/PinGenRequest}">Pin Generation</a>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="col-md-8">
+			<div class="col-md-8" th:if="${hsmFormId != null}">
+				<div th:replace="${fragmentName} :: ${hsmFormId}">Form data</div>
+			</div>
+
+			<div class="col-md-8" th:if="${hsmFormResult != null}">
+				<div th:replace="${fragmentName} :: ${hsmFormResult}">Form Result</div>
+			</div>
+
+			<br /> <br />
+			<div class="col-md-8 alert alert-danger container" th:if="${hsmFormError != null}">
+				<b>Error: </b> <span th:text="${hsmFormError}">Form Error</span>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="fragments/fragments :: pageFooter">Footer Content</div>
+
+</body>
+</html>
