@@ -64,11 +64,9 @@
 
 
         <!-- Maven Central Dependencies -->
-        <!-- https://mvnrepository.com/artifact/com.ibm.informix/jdbc -->
         <dependency>
-            <groupId>com.ibm.informix</groupId>
-            <artifactId>jdbc</artifactId>
-            <version>4.10.8.1</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
@@ -79,12 +77,25 @@
         </dependency>
 
 
-        <!-- i2c Local Dependencies -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-jcs -->
         <dependency>
-            <groupId>com.i2cinc</groupId>
-            <artifactId>common-utils</artifactId>
-            <version>1.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-jcs</artifactId>
+            <version>2.2.1</version>
+            <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-jcs-core</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>2.5.5</version>
+        </dependency>
+
 
 
 
