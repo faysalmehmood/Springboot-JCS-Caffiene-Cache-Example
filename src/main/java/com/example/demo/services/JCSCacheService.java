@@ -19,11 +19,11 @@ public class JCSCacheService  extends BaseService{
 
 	private static CacheAccess<String, City> cache = JCS.getInstance("default");
 
-
-/*	@Scheduled(fixedDelay = 100)
+	// Below method will execute after every 100 milli-seconds
+	@Scheduled(fixedDelay = 100)
 	public void initCaching() {
 		cacheTable();
-	}*/
+	}
 
 
 	public void cacheTable() {
